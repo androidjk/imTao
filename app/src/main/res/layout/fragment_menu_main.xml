@@ -2,11 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.example.imtao.fragment.menu_main_fragment">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_vp_guanggao"
+        android:layout_width="match_parent"
+        android:layout_height="120dp">
+
+    </android.support.v4.view.ViewPager>
     <include
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         layout="@layout/main_head"/>
-
 
 </RelativeLayout>
