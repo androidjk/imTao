@@ -19,15 +19,18 @@ import java.util.List;
 public class AdviceAdapter extends PagerAdapter {
     protected Context context;
     protected List<ImageView> list;
-    public AdviceAdapter(Context context, List<ImageView>list){
-        this.context=context;
-        this.list=list;
+
+    public AdviceAdapter(Context context, List<ImageView> list) {
+        this.context = context;
+        this.list = list;
     }
+
     @Override
     public int getCount() {
-        return null!=list?list.size():0;
+        return null != list ? list.size() : 0;
     }
-//初始化的方法
+
+    //初始化的方法
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         container.addView(list.get(position));
@@ -36,9 +39,10 @@ public class AdviceAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {//判断是否来自Object对象
-        return view==object;
+        return view == object;
     }
-//销毁item的方法
+
+    //销毁item的方法
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView(list.get(position));

@@ -4,6 +4,8 @@ import android.content.Context;
 import android.provider.ContactsContract;
 import android.widget.ImageView;
 
+import com.example.imtao.entity.Menu;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -14,15 +16,23 @@ import java.util.List;
 
 public class DataUtil {
 
-    public static List<ImageView> getHeaderView(Context context ,int resourece[]){
-        List<ImageView>images=new ArrayList<>();
-        for (int i:resourece){
-            ImageView imageView=new ImageView(context);
+    public static List<ImageView> getHeaderView(Context context, int resourece[]) {
+        List<ImageView> images = new ArrayList<>();
+        for (int i : resourece) {
+            ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             imageView.setImageResource(i);//传入图标id
             images.add(imageView);
         }
         return images;
 
+    }
+    public static List<Menu> getMainMenu(int icons[],String menuName[]){
+        List<Menu>menus=new ArrayList<>();
+        for (int i=0;i<icons.length;i++){
+            Menu menu=new Menu(icons[i],menuName[i]);
+            menus.add(menu);
+        }
+        return menus;
     }
 }
