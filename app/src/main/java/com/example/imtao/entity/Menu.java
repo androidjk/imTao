@@ -7,8 +7,9 @@ package com.example.imtao.entity;
 public class Menu {
     public int icons;
     public String menuName;
-    public Menu (int icon,String menuName){
-        this.icons=icon;
-        this.menuName=menuName;
+
+    public Menu(int icon, String menuName) {
+        this.icons = icon;
+        this.menuName = menuName;
     }
 }

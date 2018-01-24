@@ -22,52 +22,56 @@ import java.util.List;
  */
 
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.viewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.viewHolder> {
 
     private Context context;
-    private List<Menu>menus;
-    public RecyclerViewAdapter(Context context,List menus){
-        this.context=context;
-        this.menus=menus;
+    private List<Menu> menus;
+
+    public RecyclerViewAdapter(Context context, List menus) {
+        this.context = context;
+        this.menus = menus;
     }
 
     /**
      * 创建ViewHolder
+     *
      * @param parent
      * @param viewType
      * @return
      */
     @Override
     public viewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new viewHolder(LayoutInflater.from(context).inflate(R.layout.item_main_menu,null));
+        return new viewHolder(LayoutInflater.from(context).inflate(R.layout.item_main_menu, null));
     }
 
     /**
      * 绑定viewHolder
+     *
      * @param holder
      * @param position
      */
     @Override
     public void onBindViewHolder(viewHolder holder, int position) {
 
-        Menu menu= menus.get(position);
+        Menu menu = menus.get(position);
         holder.menuImage.setImageResource(menu.icons);
         holder.menuText.setText(menu.menuName);
     }
 
     @Override
     public int getItemCount() {
-        return null!=menus?menus.size():0;
+        return null != menus ? menus.size() : 0;
     }
 
-    public class viewHolder extends RecyclerView.ViewHolder{
+    public class viewHolder extends RecyclerView.ViewHolder {
 
         public ImageView menuImage;
         private TextView menuText;
+
         public viewHolder(View itemView) {
             super(itemView);
-            menuImage=(ImageView)itemView.findViewById(R.id.iv_menu);
-            menuText=(TextView)itemView.findViewById(R.id.tv_menu);
+            menuImage = (ImageView) itemView.findViewById(R.id.iv_menu);
+            menuText = (TextView) itemView.findViewById(R.id.tv_menu);
         }
     }
 }

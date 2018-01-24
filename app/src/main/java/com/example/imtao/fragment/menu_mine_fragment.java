@@ -19,10 +19,11 @@ import com.example.imtao.R;
  */
 
 public class menu_mine_fragment extends Fragment implements View.OnClickListener {
-     protected Button bt_login;
+    protected Button bt_login;
+
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_menu_mine,container,false);
+        return inflater.inflate(R.layout.fragment_menu_mine, container, false);
     }
 
     @Override
@@ -31,19 +32,22 @@ public class menu_mine_fragment extends Fragment implements View.OnClickListener
         initViews();
         setClickListeners();
     }
+
     //获取布局
     private void initViews() {
-        bt_login=(Button)getView().findViewById(R.id.mine_login);
+        bt_login = (Button) getView().findViewById(R.id.mine_login);
     }
+
     //绑定监听
     private void setClickListeners() {
         bt_login.setOnClickListener(this);
     }
+
     @Override
     public void onClick(View view) {
-        switch (view.getId()){
+        switch (view.getId()) {
             case R.id.mine_login://登录
-                Intent login=new Intent(getContext(), LoginActivity.class);
+                Intent login = new Intent(getContext(), LoginActivity.class);
                 startActivity(login);
                 break;
         }
