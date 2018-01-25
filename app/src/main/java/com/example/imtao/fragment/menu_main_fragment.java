@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.imtao.R;
 import com.example.imtao.adapter.AdviceAdapter;
 import com.example.imtao.adapter.RecyclerViewAdapter;
+import com.example.imtao.adapter.SecondFlightAdapter;
 import com.example.imtao.util.DataUtil;
 
 
@@ -23,6 +24,9 @@ public class menu_main_fragment extends Fragment {
     String menusName[];
     protected ViewPager viewPager;
     protected RecyclerView main_menu;
+    protected RecyclerView second_flight;
+    private int icons[]={R.mipmap.menu_second_airport,R.mipmap.menu_second_play,R.mipmap.menu_second_quan};
+    private String names[];
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_menu_main, container, false);
@@ -31,13 +35,31 @@ public class menu_main_fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initViews();
+        adviceMenu();
+       firstMenu();
+        secondMenu();
+    }
+
+    private void initViews() {
         viewPager = (ViewPager) getView().findViewById(R.id.main_vp_guanggao);
+        main_menu = (RecyclerView) getView().findViewById(R.id.main_menu_recyclerview);
+    }
+    public void adviceMenu(){
         AdviceAdapter adviceAdapter = new AdviceAdapter(getActivity(), DataUtil.getHeaderView(getActivity(), views));
         viewPager.setAdapter(adviceAdapter);
+    }
+    public void firstMenu(){
         menusName = this.getActivity().getResources().getStringArray(R.array.menusName);
         RecyclerViewAdapter menuAdapter = new RecyclerViewAdapter(getActivity(), DataUtil.getMainMenu(menusId, menusName));
-        main_menu = (RecyclerView) getView().findViewById(R.id.main_menu_recyclerview);
         main_menu.setLayoutManager(new GridLayoutManager(this.getContext(), 4));
         main_menu.setAdapter(menuAdapter);
+    }
+    public void secondMenu(){
+        second_flight = (RecyclerView) getView().findViewById(R.id.menu_second_flight);
+        names=this.getActivity().getResources().getStringArray(R.array.second_flight);
+        SecondFlightAdapter secondFlightAdapter=new SecondFlightAdapter(getActivity(), DataUtil.getSecondMenu(icons,names));
+        second_flight.setLayoutManager(new GridLayoutManager(this.getContext(),3));
+        second_flight.setAdapter(secondFlightAdapter);
     }
 }

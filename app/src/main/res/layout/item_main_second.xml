@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center">
     <ImageView
         android:paddingTop="10dp"
-        android:id="@+id/iv_menu"
+        android:id="@+id/iv_menu_second"
         android:layout_width="48sp"
         android:layout_height="48sp"
-        android:src="@mipmap/menu_airport"/>
+        android:src="@mipmap/menu_second_airport"/>
     <TextView
-        android:id="@+id/tv_menu"
+        android:id="@+id/tv_menu_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="飞机票"
-        android:paddingTop="10dp"/>
-
+        android:paddingTop="10dp"
+        android:text="国际机票"/>
 </LinearLayout>

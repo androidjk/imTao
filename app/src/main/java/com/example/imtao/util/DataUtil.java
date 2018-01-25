@@ -35,4 +35,12 @@ public class DataUtil {
         }
         return menus;
     }
+    public static List<Menu> getSecondMenu(int icons[],String name[]){
+        List<Menu>list=new ArrayList<>();
+        for (int i=0;i<icons.length;i++){
+            Menu menu=new Menu(icons[i],name[i]);
+            list.add(menu);
+        }
+        return list;
+    }
 }

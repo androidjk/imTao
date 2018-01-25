@@ -16,6 +16,7 @@
         android:layout_height="wrap_content"
         layout="@layout/main_head"/>
     <ScrollView
+        android:id="@+id/sv_menu1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/main_vp_guanggao">
@@ -28,7 +29,24 @@
                 android:layout_height="wrap_content">
 
             </android.support.v7.widget.RecyclerView>
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="#beb4b4"
+                android:layout_below="@id/main_menu_recyclerview"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/menu_second_flight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/view">
+
+            </android.support.v7.widget.RecyclerView>
         </RelativeLayout>
+
     </ScrollView>
+
+
+
 
 </RelativeLayout>
