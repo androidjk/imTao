@@ -30,9 +30,10 @@
 
             </android.support.v7.widget.RecyclerView>
             <View
+                android:paddingTop="10dp"
                 android:id="@+id/view"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
+                android:layout_height="5dp"
                 android:background="#beb4b4"
                 android:layout_below="@id/main_menu_recyclerview"/>
             <android.support.v7.widget.RecyclerView
@@ -42,6 +43,17 @@
                 android:layout_below="@id/view">
 
             </android.support.v7.widget.RecyclerView>
+            <View
+                android:paddingTop="10dp"
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:background="#beb4b4"
+                android:layout_below="@id/menu_second_flight"
+                />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></RelativeLayout>
         </RelativeLayout>
 
     </ScrollView>
