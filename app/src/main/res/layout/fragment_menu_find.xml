@@ -20,5 +20,9 @@
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         android:max="100"
         android:progress="1"/>
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

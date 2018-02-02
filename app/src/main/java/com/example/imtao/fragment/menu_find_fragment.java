@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.example.imtao.MainActivity;
 import com.example.imtao.R;
 
 import java.io.File;
@@ -19,6 +21,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -29,9 +32,12 @@ import java.net.URLConnection;
 
 public class menu_find_fragment extends Fragment {
 
+    public static final int CODEDown = 10001;
+    public static final int TIME_CODE = 10002;
+    public static final int TIME_MAX = 10;
     Button button_download;
-
     ProgressBar progressBar;
+    TextView textView;
     @Nullable
     @Override
 
@@ -46,17 +52,12 @@ public class menu_find_fragment extends Fragment {
 
         final String app_url = "http://bmob-cdn-15323.b0.upaiyun.com/2017/12/07/43f65e4d40adb3848047e18dcabf5d92.png";
         progressBar=(ProgressBar)getView().findViewById(R.id.progress_loading);
-        final Handler handler=new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                switch (msg.what){
-                    case 10001:
-                        progressBar.setProgress((Integer) msg.obj);
-                        break;
-                }
-            }
-        };
+        textView=(TextView)getView().findViewById(R.id.tv_time);
+        final TimeHandler handler=new TimeHandler(this);
+        Message messageTime=Message.obtain();
+        messageTime.what= TIME_CODE;
+        messageTime.arg1= TIME_MAX;
+        handler.sendMessageDelayed(messageTime,1000);
         button_download = (Button) getView().findViewById(R.id.button_download);
         /**
          * 点击按钮
@@ -107,7 +108,7 @@ public class menu_find_fragment extends Fragment {
                         downloadLength+=length;
                         Message message=Message.obtain();
                         message.obj=downloadLength *100 /url_length;
-                        message.what=10001;
+                        message.what= CODEDown;
                         handler.sendMessage(message);
                     }
                     outputStream.close();
@@ -122,5 +123,36 @@ public class menu_find_fragment extends Fragment {
 
             }
         });
+    }
+    public static class TimeHandler extends Handler{
+       final WeakReference<menu_find_fragment> weakReference;
+
+        public TimeHandler(menu_find_fragment activity) {
+            weakReference = new WeakReference<>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            menu_find_fragment activity=weakReference.get();
+            switch (msg.what){
+                case CODEDown:
+                    activity.progressBar.setProgress((Integer) msg.obj);
+                    break;
+                case TIME_CODE:
+                    int value=msg.arg1;
+                    activity.textView.setText(String.valueOf(value--));
+                    if (value>0){
+                        Message message=Message.obtain();
+                        message.what=TIME_CODE;
+                        message.arg1=value;
+                        sendMessageDelayed(message,1000);
+                    }
+
+                    break;
+
+
+            }
+        }
     }
 }
