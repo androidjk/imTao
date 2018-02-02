@@ -9,7 +9,6 @@
         android:id="@+id/main_vp_guanggao"
         android:layout_width="match_parent"
         android:layout_height="120dp">
-
     </android.support.v4.view.ViewPager>
     <include
         android:layout_width="match_parent"

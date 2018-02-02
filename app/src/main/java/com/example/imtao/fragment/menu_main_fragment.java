@@ -1,6 +1,8 @@
 package com.example.imtao.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -35,10 +37,36 @@ public class menu_main_fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+
+
         initViews();
         adviceMenu();
+
        firstMenu();
         secondMenu();
+        final Handler handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                if (msg.what==1){
+                    int advice_id=msg.arg1;
+                    viewPager.setCurrentItem(advice_id);
+
+                    Message message=Message.obtain();
+                    message.what=2;
+                    sendMessageDelayed(message,3000);
+                }
+                else if (msg.what==2){
+                    viewPager.setCurrentItem(1);
+                    sendEmptyMessageDelayed(1,3000);
+                }
+            }
+        };
+        Message messageAdvice=Message.obtain();
+        messageAdvice.what=1;
+        messageAdvice.arg1=0;
+        handler.sendMessageDelayed(messageAdvice,3000);
     }
 
     private void initViews() {
